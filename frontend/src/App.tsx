@@ -1,6 +1,10 @@
 import * as anchor from "@project-serum/anchor";
 import { useEffect, useState } from "react";
 import { AnchorProvider, Program, web3 } from "@project-serum/anchor";
+import { Buffer } from "buffer";
+
+// Ensure Buffer is available in the browser
+(window as any).Buffer = Buffer;
 import idl from "./idl/solana_dice_game.json";
 
 const { SystemProgram } = web3;

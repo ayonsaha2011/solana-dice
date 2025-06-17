@@ -1,0 +1,94 @@
+{
+  "version": "0.1.0",
+  "name": "solana_dice_game",
+  "instructions": [
+    {
+      "name": "initializeGame",
+      "accounts": [
+        { "name": "gameConfig", "isMut": true, "isSigner": false },
+        { "name": "admin", "isMut": true, "isSigner": true },
+        { "name": "systemProgram", "isMut": false, "isSigner": false }
+      ],
+      "args": [
+        { "name": "rewardPercentage", "type": "u64" }
+      ]
+    },
+    {
+      "name": "placeBet",
+      "accounts": [
+        { "name": "gameConfig", "isMut": true, "isSigner": false },
+        { "name": "player", "isMut": true, "isSigner": true },
+        { "name": "systemProgram", "isMut": false, "isSigner": false }
+      ],
+      "args": [
+        { "name": "chosenNumber", "type": "u8" },
+        { "name": "betAmount", "type": "u64" }
+      ]
+    },
+    {
+      "name": "updateRewardPercentage",
+      "accounts": [
+        { "name": "gameConfig", "isMut": true, "isSigner": false },
+        { "name": "admin", "isMut": true, "isSigner": true }
+      ],
+      "args": [
+        { "name": "newPercentage", "type": "u64" }
+      ]
+    },
+    {
+      "name": "pauseGame",
+      "accounts": [
+        { "name": "gameConfig", "isMut": true, "isSigner": false },
+        { "name": "admin", "isMut": true, "isSigner": true }
+      ],
+      "args": []
+    },
+    {
+      "name": "unpauseGame",
+      "accounts": [
+        { "name": "gameConfig", "isMut": true, "isSigner": false },
+        { "name": "admin", "isMut": true, "isSigner": true }
+      ],
+      "args": []
+    },
+    {
+      "name": "withdrawFunds",
+      "accounts": [
+        { "name": "gameConfig", "isMut": true, "isSigner": false },
+        { "name": "admin", "isMut": true, "isSigner": true }
+      ],
+      "args": [
+        { "name": "amount", "type": "u64" }
+      ]
+    }
+  ],
+  "accounts": [
+    {
+      "name": "GameConfig",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          { "name": "admin", "type": "publicKey" },
+          { "name": "rewardPercentage", "type": "u64" },
+          { "name": "isPaused", "type": "bool" },
+          { "name": "minBet", "type": "u64" },
+          { "name": "maxBet", "type": "u64" }
+        ]
+      }
+    }
+  ],
+  "events": [
+    {
+      "name": "BetResult",
+      "fields": [
+        { "name": "player", "type": "publicKey", "index": false },
+        { "name": "betAmount", "type": "u64", "index": false },
+        { "name": "chosenNumber", "type": "u8", "index": false },
+        { "name": "randomNumber", "type": "u8", "index": false },
+        { "name": "winAmount", "type": "u64", "index": false },
+        { "name": "won", "type": "bool", "index": false },
+        { "name": "timestamp", "type": "i64", "index": false }
+      ]
+    }
+  ]
+}

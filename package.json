@@ -4,7 +4,7 @@
   "type": "module",
   "license": "ISC",
   "scripts": {
-    "test": "ANCHOR_WALLET=~/.config/solana/id.json mocha -r ts-node/register --timeout 10000 tests/**/*.ts"
+    "test": "ANCHOR_WALLET=~/.config/solana/id.json mocha --loader ./node_modules/ts-node/esm.mjs --timeout 10000 tests/**/*.ts"
   },
   "dependencies": {
     "@project-serum/anchor": "^0.31.1",

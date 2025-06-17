@@ -1,6 +1,6 @@
 import * as anchor from "@project-serum/anchor";
 import { Program } from "@project-serum/anchor";
-import { SolanaDiceGame } from "../target/types/solana_dice_game";
+import { SolanaDiceGame } from "../target/types/solana_dice_game.js";
 import {
   PublicKey,
   SystemProgram,
